@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sending data with fetch</title>
+</head>
+<body>
+
+    <!--
+    Without any extra options fetch makes a simple GET request
+
+    GET requests are generally used for getting data
+
+    But for creating data POST is often used
+
+    GET and POST are two of the most communly used HTTP request method
+
+    HTTP requests have four parts
+    Method, URL, Body, Headers
+    The body is where data can be send to
+    To send data in a request body, we must describe the type of data ( e.g. content-type, application/json )
+    This is done with HTTP headers
+    -->
+
+    
+    <script>
+
+        async function sendData(){
+            const url = 'https://jsonplaceholder.typicode.com/users';
+            const options = {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text: 'Do the dishes'}),
+            }
+
+            const response = await fetch(url, options);
+            const result = await response.json();
+            console.log(result)
+        }
+        sendData();
+
+
+
+    </script>
+</body>
+</html>
